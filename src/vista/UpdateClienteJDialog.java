@@ -8,9 +8,23 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import modelo.Cliente;
+import modelo.GestorBBDD;
+
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.awt.event.ActionEvent;
+
 public class UpdateClienteJDialog extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
+	private JTextField textDni;
+	private JTextField textNombre;
+	private JTextField textApellidos;
+	private JTextField textDireccion;
+	private JTextField textLocalidad;
 
 	/**
 	 * Launch the application.
@@ -29,11 +43,85 @@ public class UpdateClienteJDialog extends JDialog {
 	 * Create the dialog.
 	 */
 	public UpdateClienteJDialog() {
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 533, 340);
 		getContentPane().setLayout(new BorderLayout());
-		contentPanel.setLayout(new FlowLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
+		contentPanel.setLayout(null);
+		
+		JLabel lblIntroduceDni = new JLabel("INTRODUCE DNI :");
+		lblIntroduceDni.setBounds(60, 39, 103, 23);
+		contentPanel.add(lblIntroduceDni);
+		
+		textDni = new JTextField();
+		textDni.setBounds(188, 40, 86, 20);
+		contentPanel.add(textDni);
+		textDni.setColumns(10);
+		
+		JLabel lblNombre = new JLabel("NOMBRE :");
+		lblNombre.setBounds(60, 73, 64, 14);
+		contentPanel.add(lblNombre);
+		
+		textNombre = new JTextField();
+		textNombre.setBounds(188, 70, 86, 20);
+		contentPanel.add(textNombre);
+		textNombre.setColumns(10);
+		
+		JLabel lblApellidos = new JLabel("APELLIDOS :");
+		lblApellidos.setBounds(60, 104, 64, 14);
+		contentPanel.add(lblApellidos);
+		
+		textApellidos = new JTextField();
+		textApellidos.setBounds(188, 101, 86, 20);
+		contentPanel.add(textApellidos);
+		textApellidos.setColumns(10);
+		
+		JLabel lblDireccion = new JLabel("DIRECCIÓN :");
+		lblDireccion.setBounds(60, 135, 64, 14);
+		contentPanel.add(lblDireccion);
+		
+		textDireccion = new JTextField();
+		textDireccion.setBounds(188, 132, 86, 20);
+		contentPanel.add(textDireccion);
+		textDireccion.setColumns(10);
+		
+		JLabel lblLocalidad = new JLabel("LOCALIDAD :");
+		lblLocalidad.setBounds(60, 166, 64, 14);
+		contentPanel.add(lblLocalidad);
+		
+		textLocalidad = new JTextField();
+		textLocalidad.setBounds(188, 163, 86, 20);
+		contentPanel.add(textLocalidad);
+		textLocalidad.setColumns(10);
+		
+		JButton btnCargar = new JButton("CARGAR");
+		btnCargar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				GestorBBDD gb =new GestorBBDD();
+				gb.conectar();
+				try {
+					Cliente cliente=gb.getCliente(textDni.getText());
+					textNombre.setText(cliente.getNombre());
+					textApellidos.setText(cliente.getApellidos());
+					textDireccion.setText(cliente.getDireccion());
+					textLocalidad.setText(cliente.getLocalidad());
+					
+					gb.cerrar();
+					
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				
+			}
+		});
+		btnCargar.setBounds(372, 39, 89, 23);
+		contentPanel.add(btnCargar);
+		
+		JButton btnModificar = new JButton("MODIFICAR");
+		btnModificar.setBounds(35, 221, 109, 23);
+		contentPanel.add(btnModificar);
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -51,5 +139,4 @@ public class UpdateClienteJDialog extends JDialog {
 			}
 		}
 	}
-
 }

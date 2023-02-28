@@ -51,7 +51,7 @@ public class Principal extends JFrame {
 	 */
 	public Principal() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 550, 374);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -70,9 +70,14 @@ public class Principal extends JFrame {
 		lblApellidos.setBounds(60, 123, 68, 14);
 		contentPane.add(lblApellidos);
 		
+		
 		JLabel lblDireccion = new JLabel("DIRECCIÓN:");
 		lblDireccion.setBounds(60, 159, 68, 14);
 		contentPane.add(lblDireccion);
+		
+		JLabel lblLocalidad = new JLabel("LOCALIDAD :");
+		lblLocalidad.setBounds(60, 197, 68, 14);
+		contentPane.add(lblLocalidad);
 		
 		dni = new JTextField();
 		dni.setBounds(174, 48, 129, 20);
@@ -95,7 +100,12 @@ public class Principal extends JFrame {
 		contentPane.add(direccion);
 		
 		
+	
 		
+		localidad = new JTextField();
+		localidad.setColumns(10);
+		localidad.setBounds(174, 194, 129, 20);
+		contentPane.add(localidad);
 		
 		JButton btnENTER = new JButton("GUARDAR");
 		btnENTER.addActionListener(new ActionListener() {
@@ -105,8 +115,9 @@ public class Principal extends JFrame {
 				cliente.setDni(dni.getText());
 				cliente.setNombre(nombre.getText());
 				cliente.setApellidos(apellidos.getText());
+				cliente.setDireccion(direccion.getText());
 				cliente.setLocalidad(localidad.getText());
-				cliente.setApellidos(direccion.getText());
+				
 				
 				GestorBBDD gestor = new GestorBBDD();
 				gestor.conectar();
@@ -124,17 +135,10 @@ public class Principal extends JFrame {
 			}
 			
 		});
-		btnENTER.setBounds(203, 212, 108, 23);
+		btnENTER.setBounds(51, 260, 108, 23);
 		contentPane.add(btnENTER);
 		
-		JLabel lblLocalidad = new JLabel("LOCALIDAD :");
-		lblLocalidad.setBounds(60, 184, 68, 14);
-		contentPane.add(lblLocalidad);
 		
-		localidad = new JTextField();
-		localidad.setColumns(10);
-		localidad.setBounds(174, 181, 129, 20);
-		contentPane.add(localidad);
 		
 		
 		
@@ -147,7 +151,7 @@ public class Principal extends JFrame {
 				
 			}
 		});
-		btnModificar.setBounds(324, 119, 108, 23);
+		btnModificar.setBounds(396, 119, 108, 23);
 		contentPane.add(btnModificar);
 	}
 }
