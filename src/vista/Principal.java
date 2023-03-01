@@ -157,7 +157,7 @@ public class Principal extends JFrame {
 		JButton btnSalir = new JButton("SALIR");
 		btnSalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dispose();
+				dispose();	
 			}
 		});
 		btnSalir.setBounds(360, 260, 89, 23);

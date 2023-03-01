@@ -120,6 +120,26 @@ public class UpdateClienteJDialog extends JDialog {
 		contentPanel.add(btnCargar);
 		
 		JButton btnModificar = new JButton("MODIFICAR");
+		btnModificar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				GestorBBDD gb = new GestorBBDD();
+				Cliente cliente = new Cliente();
+				cliente.setNombre(textNombre.getText());
+				cliente.setApellidos(textApellidos.getText());
+				cliente.setDireccion(textDireccion.getText());
+				cliente.setLocalidad(textLocalidad.getText());
+				gb.conectar();
+				try {
+					gb.modificarCliente(cliente, textDni.getText());
+					gb.cerrar();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			
+			
+			}
+		});
 		btnModificar.setBounds(35, 221, 109, 23);
 		contentPanel.add(btnModificar);
 		
