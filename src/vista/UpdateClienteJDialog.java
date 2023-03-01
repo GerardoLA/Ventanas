@@ -116,7 +116,7 @@ public class UpdateClienteJDialog extends JDialog {
 
 			}
 		});
-		btnCargar.setBounds(372, 39, 89, 23);
+		btnCargar.setBounds(339, 39, 103, 23);
 		contentPanel.add(btnCargar);
 
 		JButton btnModificar = new JButton("MODIFICAR");
@@ -141,7 +141,7 @@ public class UpdateClienteJDialog extends JDialog {
 
 			}
 		});
-		btnModificar.setBounds(35, 221, 109, 23);
+		btnModificar.setBounds(339, 100, 103, 23);
 		contentPanel.add(btnModificar);
 
 		JButton btnELIMINAR = new JButton("ELIMINAR");
@@ -160,18 +160,22 @@ public class UpdateClienteJDialog extends JDialog {
 
 			}
 		});
-		btnELIMINAR.setBounds(344, 221, 89, 23);
+		btnELIMINAR.setBounds(339, 162, 103, 23);
 		contentPanel.add(btnELIMINAR);
+		
+		JButton btnReset = new JButton("RESET");
+		btnReset.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+			}
+		});
+		btnReset.setBounds(339, 214, 103, 23);
+		contentPanel.add(btnReset);
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
-			{
-				JButton okButton = new JButton("OK");
-				okButton.setActionCommand("OK");
-				buttonPane.add(okButton);
-				getRootPane().setDefaultButton(okButton);
-			}
 			{
 				JButton cancelButton = new JButton("Cancel");
 				cancelButton.addActionListener(new ActionListener() {
