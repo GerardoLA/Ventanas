@@ -153,5 +153,14 @@ public class Principal extends JFrame {
 		});
 		btnModificar.setBounds(396, 119, 108, 23);
 		contentPane.add(btnModificar);
+		
+		JButton btnSalir = new JButton("SALIR");
+		btnSalir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
+		btnSalir.setBounds(360, 260, 89, 23);
+		contentPane.add(btnSalir);
 	}
 }
