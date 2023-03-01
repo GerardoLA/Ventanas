@@ -6,18 +6,18 @@ import java.sql.SQLException;
 
 public class Conector {
 	protected Connection con;
-	
+
 	public void conectar() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			this.con = DriverManager.getConnection("jdbc:mysql://localhost/agencia_viajes", "root", "");
 
-		}catch (SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
-		}catch (ClassNotFoundException e) {
+		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-			
+
 	}
 
 	public Connection getCon() {
@@ -27,7 +27,7 @@ public class Conector {
 	public void setCon(Connection con) {
 		this.con = con;
 	}
-	
+
 	public void cerrar() throws SQLException {
 		con.close();
 	}

@@ -12,6 +12,7 @@ import modelo.Cliente;
 import modelo.GestorBBDD;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -48,77 +49,76 @@ public class UpdateClienteJDialog extends JDialog {
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
-		
+
 		JLabel lblIntroduceDni = new JLabel("INTRODUCE DNI:");
 		lblIntroduceDni.setBounds(60, 39, 103, 23);
 		contentPanel.add(lblIntroduceDni);
-		
+
 		textDni = new JTextField();
 		textDni.setBounds(188, 40, 86, 20);
 		contentPanel.add(textDni);
 		textDni.setColumns(10);
-		
+
 		JLabel lblNombre = new JLabel("NOMBRE :");
 		lblNombre.setBounds(60, 73, 64, 14);
 		contentPanel.add(lblNombre);
-		
+
 		textNombre = new JTextField();
 		textNombre.setBounds(188, 70, 86, 20);
 		contentPanel.add(textNombre);
 		textNombre.setColumns(10);
-		
+
 		JLabel lblApellidos = new JLabel("APELLIDOS :");
 		lblApellidos.setBounds(60, 104, 64, 14);
 		contentPanel.add(lblApellidos);
-		
+
 		textApellidos = new JTextField();
 		textApellidos.setBounds(188, 101, 86, 20);
 		contentPanel.add(textApellidos);
 		textApellidos.setColumns(10);
-		
+
 		JLabel lblDireccion = new JLabel("DIRECCIÓN :");
 		lblDireccion.setBounds(60, 135, 64, 14);
 		contentPanel.add(lblDireccion);
-		
+
 		textDireccion = new JTextField();
 		textDireccion.setBounds(188, 132, 86, 20);
 		contentPanel.add(textDireccion);
 		textDireccion.setColumns(10);
-		
+
 		JLabel lblLocalidad = new JLabel("LOCALIDAD :");
 		lblLocalidad.setBounds(60, 166, 64, 14);
 		contentPanel.add(lblLocalidad);
-		
+
 		textLocalidad = new JTextField();
 		textLocalidad.setBounds(188, 163, 86, 20);
 		contentPanel.add(textLocalidad);
 		textLocalidad.setColumns(10);
-		
+
 		JButton btnCargar = new JButton("CARGAR");
 		btnCargar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				GestorBBDD gb =new GestorBBDD();
+				GestorBBDD gb = new GestorBBDD();
 				gb.conectar();
 				try {
-					Cliente cliente=gb.getCliente(textDni.getText());
+					Cliente cliente = gb.getCliente(textDni.getText());
 					textNombre.setText(cliente.getNombre());
 					textApellidos.setText(cliente.getApellidos());
 					textDireccion.setText(cliente.getDireccion());
 					textLocalidad.setText(cliente.getLocalidad());
-					
+
 					gb.cerrar();
-					
+
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				
-				
+
 			}
 		});
 		btnCargar.setBounds(372, 39, 89, 23);
 		contentPanel.add(btnCargar);
-		
+
 		JButton btnModificar = new JButton("MODIFICAR");
 		btnModificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -131,18 +131,19 @@ public class UpdateClienteJDialog extends JDialog {
 				gb.conectar();
 				try {
 					gb.modificarCliente(cliente, textDni.getText());
+					JOptionPane.showMessageDialog(null, "Cliente modificado");
+					
 					gb.cerrar();
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-			
-			
+
 			}
 		});
 		btnModificar.setBounds(35, 221, 109, 23);
 		contentPanel.add(btnModificar);
-		
+
 		JButton btnELIMINAR = new JButton("ELIMINAR");
 		btnELIMINAR.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -155,8 +156,7 @@ public class UpdateClienteJDialog extends JDialog {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				
-				
+
 			}
 		});
 		btnELIMINAR.setBounds(344, 221, 89, 23);
