@@ -13,6 +13,7 @@ import modelo.GestorBBDD;
 import javax.swing.JEditorPane;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 
@@ -118,6 +119,7 @@ public class Principal extends JFrame {
 				gestor.conectar();
 				try {
 					gestor.insertarCliente(cliente);
+					JOptionPane.showMessageDialog(null,"Cliente añadido!");
 					gestor.cerrar();
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block

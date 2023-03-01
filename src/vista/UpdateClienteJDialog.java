@@ -151,6 +151,7 @@ public class UpdateClienteJDialog extends JDialog {
 				gb.conectar();
 				try {
 					gb.eliminarCliente(textDni.getText());
+					JOptionPane.showMessageDialog(null,"Cliente eliminado!");
 					gb.cerrar();
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
