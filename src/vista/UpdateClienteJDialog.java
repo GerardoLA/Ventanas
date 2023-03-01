@@ -49,7 +49,7 @@ public class UpdateClienteJDialog extends JDialog {
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		
-		JLabel lblIntroduceDni = new JLabel("INTRODUCE DNI :");
+		JLabel lblIntroduceDni = new JLabel("INTRODUCE DNI:");
 		lblIntroduceDni.setBounds(60, 39, 103, 23);
 		contentPanel.add(lblIntroduceDni);
 		
@@ -122,6 +122,25 @@ public class UpdateClienteJDialog extends JDialog {
 		JButton btnModificar = new JButton("MODIFICAR");
 		btnModificar.setBounds(35, 221, 109, 23);
 		contentPanel.add(btnModificar);
+		
+		JButton btnELIMINAR = new JButton("ELIMINAR");
+		btnELIMINAR.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				GestorBBDD gb = new GestorBBDD();
+				gb.conectar();
+				try {
+					gb.eliminarCliente(textDni.getText());
+					gb.cerrar();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				
+			}
+		});
+		btnELIMINAR.setBounds(344, 221, 89, 23);
+		contentPanel.add(btnELIMINAR);
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
