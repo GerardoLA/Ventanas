@@ -95,7 +95,7 @@ public class UpdateClienteJDialog extends JDialog {
 		contentPanel.add(textLocalidad);
 		textLocalidad.setColumns(10);
 
-		JButton btnCargar = new JButton("CARGAR");
+		JButton btnCargar = new JButton("BUSCAR");
 		btnCargar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				GestorBBDD gb = new GestorBBDD();
