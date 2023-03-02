@@ -5,6 +5,12 @@
 	<version>0.0.1-SNAPSHOT</version>
 	
 	<dependencies>
+		<!-- https://mvnrepository.com/artifact/com.jtattoo/JTattoo -->
+<dependency>
+    <groupId>com.jtattoo</groupId>
+    <artifactId>JTattoo</artifactId>
+    <version>1.6.7</version>
+</dependency>
 		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 		<dependency>
 			<groupId>mysql</groupId>
