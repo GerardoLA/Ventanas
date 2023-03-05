@@ -166,6 +166,12 @@ public class UpdateClienteJDialog extends JDialog {
 		JButton btnReset = new JButton("RESET");
 		btnReset.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				textDni.setText("");
+				textNombre.setText("");
+				textApellidos.setText("");
+				textDireccion.setText("");
+				textLocalidad.setText("");
+				
 				
 				
 			}
